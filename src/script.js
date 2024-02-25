@@ -7,7 +7,13 @@ function refreshWeather(response) {
   let descriptionElement = document.querySelector("#description");
   let timeElement = document.querySelector("#current-date");
   let date = new Date(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
 
+  iconElement.innerHTML = ` <img
+                src="${response.data.condition.icon_url}"
+                alt="weather-image"
+                class="image"
+            />`;
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = response.data.wind.speed;
@@ -32,6 +38,10 @@ function formatDate(date) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
   return `${day} ${hours}:${minutes}`;
 }
 
