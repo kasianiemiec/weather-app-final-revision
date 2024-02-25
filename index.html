@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Weather Forecast App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <form action="" id="search-form">
+        <input
+          type="text"
+          placeholder="Enter a city..."
+          class="typecity"
+          id="search-form-input"
+        />
+        <input type="submit" value="Search" class="search" />
+      </form>
+      <hr />
+      <header>
+        <h1 id="city"></h1>
+        <h2>
+          <div class="temp">
+            <span id="icon">
+              <img
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png"
+                alt="weather-image"
+                class="image"
+            /></span>
+            <span id="temp"></span>°C
+          </div>
+        </h2>
+        <p>
+          <span id="current-date"> Monday 15:46</span>
+          , <span id="description"></span> <br />
+          Humidity: <strong><span id="humidity"></span>%</strong>, Wind:
+          <strong><span id="current-wind"></span>km/h</strong>
+        </p>
+      </header>
+      <div class="weather-forecast" id="forecast"></div>
+      <footer>
+        Built by
+        <a href="https://github.com/kasianiemiec" target="_blank"
+          >Kasia Niemiec</a
+        >, open-sourced on
+        <a
+          href="https://github.com/kasianiemiec/weather-search-app-final-backup"
+          target="_blank"
+          >GitHub</a
+        >
+        and hosted on
+        <a href="https://loquacious-bonbon-01438e.netlify.app/" target="_blank"
+          >Netlify</a
+        >.
+      </footer>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>
