@@ -60,5 +60,32 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function displayForecast() {
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  let forecastHtml = "";
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+<div class="weather-forecast-day">
+          ${formatDay(day.time)} <br /><img
+            src="${day.condition.icon_url}"
+            alt=""
+            width="60px"
+          />
+          <br /><span class="temp-max">${Math.round(
+            day.temperature.maximum
+          )}°</span
+          ><span class="temp-min"> ${Math.round(
+            day.temperature.minimum
+          )}°</span>
+        </div>
+`;
+  });
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
+
+displayForecast();
