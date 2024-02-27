@@ -62,6 +62,12 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
+
 function getForecast(city) {
   let apiKey = "98bc9f158331o422ta5db05dbd90ba36";
   let units = "metric";
@@ -70,12 +76,12 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
 <div class="weather-forecast-day">
           ${formatDay(day.time)} <br /><img
             src="${day.condition.icon_url}"
@@ -90,9 +96,12 @@ function displayForecast(response) {
           )}°</span>
         </div>
 `;
+    }
   });
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
+
+searchCity("Paris");
